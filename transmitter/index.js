@@ -4,9 +4,6 @@ var http = require('http');
 const app = express()
 const port = 5000;
 
-
-
-
 app.get('/data', (req, res) => {
 
     const options = {
@@ -31,6 +28,7 @@ app.get('/data', (req, res) => {
 
     request.on('error', (error) => {
         console.error('Error:', error);
+        res.status(500).send(error);
     });
 
     request.end();
