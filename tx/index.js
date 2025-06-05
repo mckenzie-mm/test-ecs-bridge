@@ -1,13 +1,13 @@
 const express = require('express');
 var http = require('http');
 
-const app = express()
+const app = express();
 const port = 5000;
 
 app.get('/data', (req, res) => {
 
     const options = {
-        hostname: 'localhost',
+        hostname: 'webapi',
         port: 3000,
         path: '/',
         method: 'GET'
@@ -32,12 +32,17 @@ app.get('/data', (req, res) => {
     });
 
     request.end();
-})
+});
+
+app.get('/', (req, res) => {
+  res.send(`Example app listening on port ${port}`);
+});
+
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
 
 
 
