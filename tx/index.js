@@ -13,25 +13,25 @@ app.get('/data', (req, res) => {
         method: 'GET'
     };
 
-    const request = http.request(options, (response) => {
+    const client = http.request(options, (message) => {
         let data = '';
 
-        response.on('data', (chunk) => {
+        message.on('data', (chunk) => {
             data += chunk;
         });
 
-        response.on('end', () => {
-            console.log('Response:', data);
+        message.on('end', () => {
+            console.log('Message:', data);
             res.send(data);
         });
     });
 
-    request.on('error', (error) => {
+    client.on('error', (error) => {
         console.error('Error:', error);
         res.status(500).send(error);
     });
 
-    request.end();
+    client.end();
 });
 
 app.get('/', (req, res) => {
