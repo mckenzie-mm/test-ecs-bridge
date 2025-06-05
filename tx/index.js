@@ -7,7 +7,7 @@ const port = 5000;
 app.get('/data', (req, res) => {
 
     const options = {
-        hostname: 'webapi',
+        hostname: 'localhost',
         port: 3000,
         path: '/',
         method: 'GET'
